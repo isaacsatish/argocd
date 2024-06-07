@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebapp
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: mycontainer
+        image: xldevdocker/helloworld:c653f31
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: mykustom-map
+        
